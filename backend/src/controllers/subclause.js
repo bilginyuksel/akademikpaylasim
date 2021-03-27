@@ -21,7 +21,7 @@ router.post("/", async function (req, res) {
   });
   
 
-  router.get("/", async function(req,res){
+  router.get("/", async function(req, res){
     try {
       var response = await db.Subclause.findAll({
         include: [{all: true}]

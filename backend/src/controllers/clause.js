@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models");
 
+const BAD_REQUEST = {"code": 400, "desc": "BAD_REQUEST"};
+
 router.post("/", async function (req, res) {
   try {
     var response = await db.Clause.create(req.body);
@@ -65,8 +67,13 @@ router.get("/", async function(req,res){
 });
 
 router.put("/", async function (req, res) {
-  try {
-    var resp = await db.Clause.update(req.body,{
+
+  if(req.body.id === undefined) {
+    res.send(BAD_REQUEST);
+    return;
+  }
+
+    await db.Clause.update(req.body,{
       where:{
         id:req.body.id
       }
@@ -79,12 +86,6 @@ router.put("/", async function (req, res) {
       }]
     })
     res.status(200).json(profession);
-    console.log(resp);
-  } catch (error) {
-    console.log(error);
-    res.status(404).json({ error });
-    console.log('update başarısız.');
-  }
 });
 
 router.delete("/", async function (req, res) {
