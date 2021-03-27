@@ -26,6 +26,7 @@ router.get("/:id", async function (req, res) {
 });
 
 router.get("/", async function (req, res) {
+  console.log("rquest captured")
   try {
     var resp = await db.Profession.findAll();
     res.json(resp);

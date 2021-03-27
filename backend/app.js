@@ -6,7 +6,7 @@ const ProfessionController = require("./src/controllers/profession");
 const ClauseController = require("./src/controllers/clause");
 const SubclauseController = require("./src/controllers/subclause");
 
-app.listen(process.env.PORT, process.env.HOSTNAME, () => {
+app.listen(3001, 'localhost', () => {
   console.log("App started");
 });
 

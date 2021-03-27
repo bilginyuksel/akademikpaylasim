@@ -7,6 +7,7 @@ function Index() {
 
   const getData = async () => {
     const response = await axios.get("http://localhost:3001/professions");
+    console.log(response);
     setProfessions(response.data);
   };
 
